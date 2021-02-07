@@ -29,7 +29,13 @@ class Member(object):
         :param member_id: str - The LID of the member.
         :return: dict - Member
         """
-        pass
+        if member_id is None:
+            member_id = self._member_id
+        response = self._api.api_call(
+            path=f"member/{member_id}"
+        )
+        member_response = response.json()
+        return member_response
 
     def watchlist(self, member_id=None, watchlist_request=None):
         """

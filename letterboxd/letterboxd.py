@@ -142,7 +142,8 @@ class Letterboxd(object):
         :return: services.member.Member object
         """
         member = Member(api=self.api, member_id=member_id)
-        return member
+        member_response = member.details()
+        return member_response
 
     def search(self, search_request):
         """
